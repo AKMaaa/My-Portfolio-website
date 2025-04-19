@@ -1,0 +1,93 @@
+[
+    {
+        "year": 2024,
+        "items": [
+            {
+                "type": "work",
+                "title": "Lead Creative Technologist",
+                "organization": "Awesome Tech Inc.",
+                "url": "https://example.com/awesome-tech",
+                "period": "Jan - Present",
+                "description": "Leading interactive projects, focusing on innovative UI/UX and frontend solutions.",
+                "projects": [
+                    {
+                        "name": "Project Phoenix",
+                        "description": "Real-time data visualization.",
+                        "tags": [
+                            "React",
+                            "D3.js"
+                        ]
+                    },
+                    {
+                        "name": "Iris Interaction",
+                        "description": "Experimental UI concepts.",
+                        "tags": [
+                            "Three.js",
+                            "UI/UX"
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "work",
+                "title": "Freelance Generative Artist",
+                "organization": "Self-Employed",
+                "url": null,
+                "period": "Mar - Present",
+                "description": "Creating unique generative visuals."
+            }
+        ]
+    },
+    {
+        "year": 2023,
+        "items": [
+            {
+                "type": "work",
+                "title": "Co-founder & Designer",
+                "organization": "NPO Manabi-tashi Design",
+                "url": "https://example.com/npo",
+                "period": "Sep - Present",
+                "description": "Establishing the NPO, focusing on accessible design education.",
+                "projects": [
+                    {
+                        "name": "Workshop Series",
+                        "description": "Planning coding workshops.",
+                        "tags": [
+                            "p5.js",
+                            "Education"
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "work",
+                "title": "Frontend Developer (Part-time)",
+                "organization": "Local Startup Ltd.",
+                "url": null,
+                "period": "Feb - Dec",
+                "description": "Developed and maintained UI components."
+            },
+            {
+                "type": "education",
+                "title": "Advanced Web Development Course",
+                "organization": "Online Learning Platform",
+                "url": "https://example.com/course",
+                "period": "May - Aug",
+                "description": "Focused on modern frontend frameworks and techniques."
+            }
+        ]
+    },
+    {
+        "year": 2020,
+        "items": [
+            {
+                "type": "education",
+                "title": "Bachelor of Science in Computer Science",
+                "organization": "University of Example",
+                "url": null,
+                "period": "2016 - 2020",
+                "description": "Specialized in Human-Computer Interaction."
+            }
+        ]
+    }
+]

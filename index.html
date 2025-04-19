@@ -1,32 +1,310 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akira Maeda・前田 祥</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akira Maeda Portfolio Site</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-    <div id="wrapper">
-        <header>
-            <h1 class="h1_logo">
-                <a href="" data-load-add="show" class="show">
-                    <span>A</span><span>k</span><span>i</span><span>r</span><span>a</span>
-                    <span>M</span><span>a</span><span>e</span><span>d</span><span>a</span>
-                </a>
-            </h1>
-            <div class="header_right">
-                <ul>
-                    <li><a href="news">works</a></li>
-                    <li><a href="biography">BIOGRAPHY</a></li>
-                    <li><a href="live"></a></li>
-                </ul>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"
+      integrity="sha512-0rSLUdrm8JUS3J4F1xgUVwMk+M60i5mk9nKlcXnr9/J7M3n9nCkZeQkQOT6bS/6X/N148/+j69tfGSS000n0PA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body data-theme="light">
+    <div id="p5-canvas-container"></div>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="site-branding">
+          <div class="site-title"><a href="#">Akira Maeda・前田 祥</a></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <h1>Technologist & Learning Enviroment Designer</h1>
+              <p>
+                デザインとテクノロジーの交差点で、より良いコミュニティを創造する。<br />
+                ユーザー体験を第一に考え、三方よしの関係性へ。
+              </p>
             </div>
-        </header>
-    </div>
-</body>
+            <div class="about-image">
+              <img
+                src="https://via.placeholder.com/300/cccccc/aaaaaa?text=You"
+                alt="Akira MaedaAkira Maeda - Profile Picture"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section id="philosophy">
+        <div class="container">
+          <h2>Philosophy</h2>
+          <blockquote>
+            "Simplicity driven by thoughtful complexity. Technology as a medium
+            for human expression."
+          </blockquote>
+          <p>
+            本質を見極め、洗練された形に落とし込むこと。ユーザーの視点に立ち、直感的で心地よい体験を設計・実装します。
+          </p>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+           <h2>Experience</h2>
+           <div id="experience-content"></div>
+        </div>
+   </section>
+   
+   <section id="awards">
+       <div class="container">
+           <h2>Awards & Recognition</h2>
+           <div class="awards-list" id="awards-list-content"></div>
+       </div>
+   </section>
+   
+      <section id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h3>Technical</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <i class="devicon-html5-plain colored"></i><span>HTML5</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-css3-plain colored"></i><span>CSS3</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-javascript-plain colored"></i
+                  ><span>JavaScript</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-typescript-plain colored"></i
+                  ><span>TypeScript</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-react-original colored"></i
+                  ><span>React</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-python-plain"></i><span>Python</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-nodejs-plain colored"></i
+                  ><span>Node.js</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-git-plain"></i><span>Git</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-figma-plain colored"></i><span>Figma</span>
+                </div>
+                <div class="skill-item">
+                  <i class="devicon-threejs-original"></i><span>Three.js</span>
+                </div>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3>Design & Soft Skills</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <i class="fas fa-object-group"></i><span>UI/UX Design</span>
+                </div>
+                <div class="skill-item">
+                  <i class="fas fa-lightbulb"></i><span>Design Thinking</span>
+                </div>
+                <div class="skill-item">
+                  <i class="fas fa-users-rays"></i><span>Facilitation</span>
+                </div>
+                <div class="skill-item">
+                  <i class="fas fa-puzzle-piece"></i
+                  ><span>Problem Solving</span>
+                </div>
+                <div class="skill-item">
+                  <i class="fas fa-comments"></i><span>Communication</span>
+                </div>
+                <div class="skill-item">
+                  <i class="fas fa-users"></i><span>Teamwork</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="works">
+        <div class="container">
+          <h2>Selected Works</h2>
+          <div class="work-grid">
+            <div class="work-item">
+              <div
+                class="work-item-image"
+                style="
+                  background-image: url('https://via.placeholder.com/600x400/777777/eeeeee?text=GenArt+Exhibit');
+                "
+              ></div>
+              <div class="work-item-content">
+                <h3>Generative Flow</h3>
+                <p>
+                  Interactive installation using p5.js exploring fluid dynamics.
+                </p>
+                <div class="work-tags">
+                  <span>p5.js</span><span>Generative Art</span
+                  ><span>Installation</span>
+                </div>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="work-link external-link"
+                  >View Case Study</a
+                >
+              </div>
+            </div>
+            <div class="work-item">
+              <div
+                class="work-item-image"
+                style="
+                  background-image: url('https://via.placeholder.com/600x400/888888/ffffff?text=Web+App+UI');
+                "
+              ></div>
+              <div class="work-item-content">
+                <h3>Minimalist Dashboard</h3>
+                <p>
+                  Clean and intuitive UI design for a complex data application.
+                </p>
+                <div class="work-tags">
+                  <span>UI Design</span><span>React</span><span>Figma</span>
+                </div>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="work-link external-link"
+                  >View Prototype</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="inspirations">
+        <div class="container">
+          <h2>Inspirations / Music</h2>
+          <p>好きな音楽。</p>
+          <div class="spotify-grid">
+            <div class="spotify-item compact">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7vG8zjbeQmwCe4azzU77oU?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </iframe>
+            </div>
+            <div class="spotify-item compact">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2QBYiwI1QmezDTytUuuysO?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-item compact">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7toQZLkcMHMSVPYmIAsVik?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-item compact">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1RAeBVWAVmqgk9wGfDuyeM?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-item compact">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BKLCZ1jbUBVqRi2FVlTVw?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-item compact"><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6hbHNlBB2XLrMcnHZKYFKa?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="interests">
+        <div class="container">
+          <h2>Interests</h2>
+          <p>
+            Web, Learning Enviroment Design, Coffee Culture, Critical Thinking.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2>Let's Collaborate</h2>
+          <p>
+            Interested in working together or discussing creative ideas?
+          </p>
+          <a href="mailto:[your-email@example.com]" class="contact-button"
+            >Contact Me</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a
+            href="https://github.com/AKMaaa"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+            class="external-link"
+            >GitHub</a
+          >
+          <a
+            href="https://linkedin.com/in/akitch-maeda-akira"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+            class="external-link"
+            >LinkedIn</a
+          >
+        </div>
+        <div class="footer-toggle-wrap">
+          <button
+            class="theme-toggle-button"
+            id="theme-toggle"
+            title="Toggle theme"
+          >
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+          </button>
+        </div>
+        <p>&copy; <span id="current-year"></span> Akira Maeda.</p>
+      </div>
+    </footer>
+
+    <script src="js/sketch.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
 </html>
