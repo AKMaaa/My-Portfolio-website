@@ -184,7 +184,7 @@ p {
   margin-bottom: calc(var(--spacing-unit) * 1.5);
   color: var(--color-text);
   font-weight: 300;
-  max-width: 68ch;
+  max-width: 100ch;
   line-height: 1.8;
 }
 a {
@@ -273,7 +273,7 @@ section.visible {
   flex-shrink: 0;
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 5%;
   overflow: hidden;
   border: 3px solid var(--color-border);
   margin-bottom: var(--spacing-unit);

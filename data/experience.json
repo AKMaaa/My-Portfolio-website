@@ -1,79 +1,48 @@
 [
     {
-        "year": 2024,
+        "year": 2026,
         "items": [
             {
-                "type": "work",
-                "title": "Lead Creative Technologist",
-                "organization": "Awesome Tech Inc.",
-                "url": "https://example.com/awesome-tech",
-                "period": "Jan - Present",
-                "description": "Leading interactive projects, focusing on innovative UI/UX and frontend solutions.",
-                "projects": [
-                    {
-                        "name": "Project Phoenix",
-                        "description": "Real-time data visualization.",
-                        "tags": [
-                            "React",
-                            "D3.js"
-                        ]
-                    },
-                    {
-                        "name": "Iris Interaction",
-                        "description": "Experimental UI concepts.",
-                        "tags": [
-                            "Three.js",
-                            "UI/UX"
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "work",
-                "title": "Freelance Generative Artist",
-                "organization": "Self-Employed",
-                "url": null,
-                "period": "Mar - Present",
-                "description": "Creating unique generative visuals."
+                "type": "works",
+                "title": "New Graduate, IT Consultant",
+                "organization": "Simplex Holdings, Inc.",
+                "url": "https://www.simplex.holdings/en/",
+                "period": "2026 - current",
+                "description": "IT consultant"
             }
         ]
     },
     {
-        "year": 2023,
+        "year": 2024,
         "items": [
             {
-                "type": "work",
-                "title": "Co-founder & Designer",
-                "organization": "NPO Manabi-tashi Design",
-                "url": "https://example.com/npo",
-                "period": "Sep - Present",
-                "description": "Establishing the NPO, focusing on accessible design education.",
-                "projects": [
-                    {
-                        "name": "Workshop Series",
-                        "description": "Planning coding workshops.",
-                        "tags": [
-                            "p5.js",
-                            "Education"
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "work",
-                "title": "Frontend Developer (Part-time)",
-                "organization": "Local Startup Ltd.",
-                "url": null,
-                "period": "Feb - Dec",
-                "description": "Developed and maintained UI components."
-            },
-            {
                 "type": "education",
-                "title": "Advanced Web Development Course",
-                "organization": "Online Learning Platform",
-                "url": "https://example.com/course",
-                "period": "May - Aug",
-                "description": "Focused on modern frontend frameworks and techniques."
+                "title": "Master of System Information Science",
+                "organization": "公立はこだて未来大学大学院",
+                "url": "https://fun.ac.jp",
+                "period": "2024 - 2026",
+                "description": "システム情報科学研究科 メディアデザイン領域 博士前期課程を卒業。"
+            }
+        ]
+    },
+    {
+        "year": 2021,
+        "items": [
+            {
+                "type": "works",
+                "title": "Part Time Job, Web Engineering",
+                "organization": "ハコレコドットコム株式会社",
+                "url": "https://www.hakoreco.com",
+                "period": "2021 - 2026",
+                "description": "Webサイトの保守・運用・開発。"
+            },
+            {
+                "type": "works",
+                "title": "Part Time Job, Video Interview",
+                "organization": "日本放送協会 / NHK",
+                "url": "https://www.nhk.or.jp",
+                "period": "2021 - 2026",
+                "description": "ライトマンとしてニュース映像の撮影補助。"
             }
         ]
     },
@@ -82,11 +51,64 @@
         "items": [
             {
                 "type": "education",
-                "title": "Bachelor of Science in Computer Science",
-                "organization": "University of Example",
-                "url": null,
-                "period": "2016 - 2020",
-                "description": "Specialized in Human-Computer Interaction."
+                "title": "Bachelor of System Information Science",
+                "organization": "公立はこだて未来大学",
+                "url": "https://fun.ac.jp",
+                "period": "2020 - 2024",
+                "description": "システム情報科学部 情報アーキテクチャ学科 情報デザインコースを卒業。Web開発が好きになった。 / Graduated from Information Design Course, Department of Information Architecture, Faculty of System  Information Science, and fell in love with web development."
+            }
+        ]
+    },
+    {
+        "year": 2016,
+        "items": [
+            {
+                "type": "education",
+                "title": "High School",
+                "organization": "大阪府立泉北高等学校 総合科学科",
+                "url": "https://semboku-h.ed.jp",
+                "period": "2016 - 2019",
+                "description": "総合科学科を卒業。科学部に所属。ビオトープが好きだった。/ Graduated from the Department of Integrated Sciences. Member of the Science Club. Loved biotopes.",
+                "projects": [
+                    {
+                        "name": "乳酸菌",
+                        "description": "乳酸菌の培養条件を研究し、対外発表",
+                        "tags": [
+                            "微生物",
+                            "生物実験"
+                        ]
+                    },
+                    {
+                        "name": "ビオトープの調査",
+                        "description": "人工的に創り上げた生態系の調査活動",
+                        "tags": [
+                            "生態系",
+                            "モニタリング調査"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "year": 2013,
+        "items": [
+            {
+                "type": "education",
+                "title": "Junior High School",
+                "organization": "和泉市立石尾中学校",
+                "url": "https://www.city.osaka-izumi.lg.jp/school/jhsch/ishio/index.html",
+                "period": "2013 - 2016",
+                "description": "野球部に所属。運動が好きだった。/ I was a member of the baseball club. I loved exercise.",
+                "projects": [
+                    {
+                        "name": "野球部",
+                        "description": "外野手を担当。ランニングや練習中にいかに遊ぶかに励む。",
+                        "tags": [
+                            "スポーツ"
+                        ]
+                    }
+                ]
             }
         ]
     }
