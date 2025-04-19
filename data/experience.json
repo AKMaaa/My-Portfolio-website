@@ -17,10 +17,23 @@
         "items": [
             {
                 "type": "works",
+                "title": "Part Time Job, Web Engineering, Tutor",
+                "organization": "メタ学習ラボ, 公立はこだて未来大学",
+                "url": "https://meta-lab.jp/",
+                "period": "2025 - 2026",
+                "description": "学習理論やメタ認知を応用した学習指導。"
+            }
+        ]
+    },
+    {
+        "year": 2024,
+        "items": [
+            {
+                "type": "works",
                 "title": "Internship, Engineer",
                 "organization": "Simplex Holdings, Inc.",
                 "url": "https://www.simplex.holdings/en/",
-                "period": "2025.09",
+                "period": "2024.09",
                 "description": "Javaを用いた開発体験。"
             }
         ]
@@ -68,7 +81,7 @@
                     },
                     {
                         "name": "naedoko",
-                        "description": "議論を支援するWebアプリケーションの開発",
+                        "description": "議論を支援するWebアプリケーションの開発。",
                         "tags": [
                             "Web App",
                             "Discussion Based Learning"
@@ -129,7 +142,7 @@
                 "organization": "IBM Japan, Ltd.",
                 "url": "https://www.ibm.com/jp-ja",
                 "period": "2022.09",
-                "description": "金融サービスのUI・UXデザイン"
+                "description": "金融サービスのUI・UXデザイン。"
             },
             {
                 "type": "works",
@@ -137,7 +150,7 @@
                 "organization": "NAVITIME JAPAN Co., Ltd.",
                 "url": "https://corporate.navitime.co.jp/",
                 "period": "2022.08",
-                "description": "電車の運行状況を閲覧できるWebアプリの開発"
+                "description": "電車の運行状況を閲覧できるWebアプリの開発。"
             },
             {
                 "type": "works",
@@ -145,7 +158,7 @@
                 "organization": "Funai Consulting Incorporated",
                 "url": "https://www.funaisoken.co.jp/",
                 "period": "2022.08",
-                "description": "医療系中小企業へのコンサルティング"
+                "description": "医療系中小企業へのコンサルティング。"
             }
         ]
     },
@@ -216,6 +229,14 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "works",
+                "title": "Part Time Job, Web Staff",
+                "organization": "Starbucks Coffee Japan",
+                "url": "https://www.starbucks.co.jp/?srsltid=AfmBOootNp5jlTGU79Ah3fKjKRvQLcq_agHAiGBSHQ-w0dzFUCNwDcCH",
+                "period": "2020",
+                "description": "店員を経験。"
             }
         ]
     },
@@ -232,7 +253,7 @@
                 "projects": [
                     {
                         "name": "乳酸菌",
-                        "description": "乳酸菌の培養条件を研究し、対外発表",
+                        "description": "乳酸菌の培養条件を研究し、対外発表。",
                         "tags": [
                             "微生物",
                             "生物実験"
@@ -240,7 +261,7 @@
                     },
                     {
                         "name": "Biotop",
-                        "description": "人工的に創り上げた生態系の調査活動",
+                        "description": "人工的に創り上げた生態系の調査活動。",
                         "tags": [
                             "生態系",
                             "モニタリング調査"
