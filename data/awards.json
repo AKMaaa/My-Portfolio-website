@@ -1,30 +1,58 @@
 [
     {
+        "category": "academic",
+        "name": "学生セッション優秀発表賞・Best Presentation Award for Student Session",
+        "issuer": "日本教育工学会, 2025年春季全国大会",
+        "date": "2025.03",
+        "description": "議論を基盤とした学習における議論トピックと学習者の経験や文脈を結び付けるLLMエージェントの検討"
+    },    
+    {
+        "category": "academic",
+        "name": "学長賞",
+        "issuer": "Future University Hakodate",
+        "date": "2024.03",
+        "description": "AIリテラシー教育活動に対する受賞。"
+    },
+    {
         "category": "tech",
-        "name": "Tech Innovation Award",
-        "issuer": "XYZ Conference",
-        "date": "2024",
-        "description": "Recognized for the interactive visualization project 'Project Phoenix'."
+        "name": "最優秀賞",
+        "issuer": "p2hacks, Future University Hakodate",
+        "date": "2022.12",
+        "description": "2022年に開催された学内のハッカソンにおいて3年生以上の部門で最優秀賞(1位)を受賞。デザイナー、エンジニアとして参加。開発にはイシュードリブン開発を取り入れ1週間で効率的にモバイルアプリの開発。"
+    },    
+    {
+        "category": "tech",
+        "name": "優秀賞",
+        "issuer": "spajam",
+        "date": "2022.10",
+        "description": "デザイナーとしてアンドロイドアプリのデザインを担当。「あまい」というテーマでアプリの企画、UI・UXデザインを実施。"
     },
     {
         "category": "art",
-        "name": "Generative Art Contest - Gold Prize",
-        "issuer": "Creative Code Fest",
-        "date": "2023",
-        "description": "Awarded for the piece 'Algorithmic Bloom'."
+        "name": "奨励賞",
+        "issuer": "はこだて・冬・アート展",
+        "date": "2022.01",
+        "description": "第22回 はこだて・冬・アート展。Processing言語で実装したデジタルアート作品。"
     },
     {
         "category": "academic",
-        "name": "Dean's List",
-        "issuer": "University of Example",
-        "date": "2020",
-        "description": "Maintained high academic standing."
+        "name": "大阪府生徒研究発表会 銀賞",
+        "issuer": "大阪サイエンスデイ",
+        "date": "2017.08",
+        "description": "乳酸菌の生存温度に関する研究。"
+    },
+    {
+        "category": "academic",
+        "name": "堺市環境市長賞 受賞",
+        "issuer": "大阪府 堺市",
+        "date": "2017.07",
+        "description": "大阪府堺市に関係する環境活動・小学生向け科学教室に対して表彰。"
     },
     {
         "category": "sports",
-        "name": "University Tournament MVP",
-        "issuer": "Example University Athletics",
-        "date": "2019",
-        "description": "Player award for the annual basketball tournament."
+        "name": "大阪府大会 優勝",
+        "issuer": "第55回 大阪中学校軟式優勝野球大会",
+        "date": "2015",
+        "description": "夏の軟式野球大会で大阪府部門で優勝しました。近畿大会へと駒を進めました。"
     }
 ]

@@ -8,7 +8,20 @@
                 "organization": "Simplex Holdings, Inc.",
                 "url": "https://www.simplex.holdings/en/",
                 "period": "2026 - current",
-                "description": "IT consultant"
+                "description": "IT consultant, Engineer, UI・UX Designer"
+            }
+        ]
+    },
+    {
+        "year": 2025,
+        "items": [
+            {
+                "type": "works",
+                "title": "Internship, Engineer",
+                "organization": "Simplex Holdings, Inc.",
+                "url": "https://www.simplex.holdings/en/",
+                "period": "2025.09",
+                "description": "Javaを用いた開発体験。"
             }
         ]
     },
@@ -22,6 +35,117 @@
                 "url": "https://fun.ac.jp",
                 "period": "2024 - 2026",
                 "description": "システム情報科学研究科 メディアデザイン領域 博士前期課程を卒業。"
+            },
+            {
+                "type": "works",
+                "title": "Internship, Campus Leader",
+                "organization": "Notion Labs, Inc.",
+                "url": "https://www.notion.com/ja/about",
+                "period": "2024.08-current",
+                "description": "Notionの普及活動を実施。学内でワークショップを展開。"
+            }
+        ]
+    },
+    {
+        "year": 2023,
+        "items": [
+            {
+                "type": "works",
+                "title": "Side Job, Engineer",
+                "organization": "NPO Upskilling Design Studio",
+                "url": "https://upskillingjp.org/",
+                "period": "2023.09-current",
+                "description": "広報やエンジニアとして科学技術教育の推進を実施。",
+                "projects": [
+                    {
+                        "name": "aiEDU JAPAN",
+                        "description": "AIリテラシー教育を日本全国に展開。アクティブラーニング教材を開発・研究。",
+                        "tags": [
+                            "AI literacy",
+                            "Workshop",
+                            "Learning Enviroment Design"
+                        ]
+                    },
+                    {
+                        "name": "naedoko",
+                        "description": "議論を支援するWebアプリケーションの開発",
+                        "tags": [
+                            "Web App",
+                            "Discussion Based Learning"
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "works",
+                "title": "Side Job, Staff",
+                "organization": "函館市女性会議",
+                "url": "https://l-north.jp/supporter/%E5%87%BD%E9%A4%A8%E5%B8%82%E5%A5%B3%E6%80%A7%E4%BC%9A%E8%AD%B0/",
+                "period": "2023.08-current",
+                "description": "男女共同参画を根底に、防災やファッションショーの事業を展開。",
+                "projects": [
+                    {
+                        "name": "はこだて防災マルシェ",
+                        "description": "防災について楽しく学ぶイベント。",
+                        "tags": [
+                            "disaster prevention",
+                            "Workshop"
+                        ]
+                    },
+                    {
+                        "name": "Hakodate collection",
+                        "description": "障害の有無や性別、年齢など関係なく、さまざま人がモデルとして出演するユニバーサルファッションショー。",
+                        "tags": [
+                            "universal design",
+                            "fashion"
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "works",
+                "title": "Internship, Designer",
+                "organization": "CyberAgent, Inc.",
+                "url": "https://www.cyberagent.co.jp/",
+                "period": "2023.03",
+                "description": "UIデザイナーとしてAbema事業を想定したサービスをデザイン。"
+            },
+            {
+                "type": "works",
+                "title": "Internship, Software Engineer",
+                "organization": "SONY;Sony Semiconductor Solutions Corporation",
+                "url": "https://www.sony-semicon.com/ja/company/about/index.html",
+                "period": "2023.02",
+                "description": "画像処理アルゴリズムの開発。"
+            }
+        ]
+    },
+    {
+        "year": 2022,
+        "items": [
+            {
+                "type": "works",
+                "title": "Internship, Designer",
+                "organization": "IBM Japan, Ltd.",
+                "url": "https://www.ibm.com/jp-ja",
+                "period": "2022.09",
+                "description": "金融サービスのUI・UXデザイン"
+            },
+            {
+                "type": "works",
+                "title": "Internship, Web Engineering",
+                "organization": "NAVITIME JAPAN Co., Ltd.",
+                "url": "https://corporate.navitime.co.jp/",
+                "period": "2022.08",
+                "description": "電車の運行状況を閲覧できるWebアプリの開発"
+            },
+            {
+                "type": "works",
+                "title": "Internship, Management consulting",
+                "organization": "Funai Consulting Incorporated",
+                "url": "https://www.funaisoken.co.jp/",
+                "period": "2022.08",
+                "description": "医療系中小企業へのコンサルティング"
             }
         ]
     },
@@ -42,7 +166,17 @@
                 "organization": "日本放送協会 / NHK",
                 "url": "https://www.nhk.or.jp",
                 "period": "2021 - 2026",
-                "description": "ライトマンとしてニュース映像の撮影補助。"
+                "description": "ライトマンとしてニュース映像の撮影補助。",
+                "projects": [
+                    {
+                        "name": "ニュース撮影",
+                        "description": "自然風景やイベント、政治まで幅広く取材。道南エリアを中心に駆け回る。",
+                        "tags": [
+                            "メディア取材",
+                            "テレビ"
+                        ]
+                    }
+                ]
             }
         ]
     },
@@ -55,7 +189,33 @@
                 "organization": "公立はこだて未来大学",
                 "url": "https://fun.ac.jp",
                 "period": "2020 - 2024",
-                "description": "システム情報科学部 情報アーキテクチャ学科 情報デザインコースを卒業。Web開発が好きになった。 / Graduated from Information Design Course, Department of Information Architecture, Faculty of System  Information Science, and fell in love with web development."
+                "description": "システム情報科学部 情報アーキテクチャ学科 情報デザインコースを卒業。Web開発が好きになった。 / Graduated from Information Design Course, Department of Information Architecture, Faculty of System  Information Science, and fell in love with web development.",
+                "projects": [
+                    {
+                        "name": "ハッカソン",
+                        "description": "学内や学外のハッカソンに複数回出場。学内では、最優秀賞を、学外では優秀賞を受賞。",
+                        "tags": [
+                            "アプリ開発",
+                            "サービスデザイン"
+                        ]
+                    },
+                    {
+                        "name": "卒業論文",
+                        "description": "AIリテラシーを向上させるための支援システムを開発｡",
+                        "tags": [
+                            "研究",
+                            "システム開発"
+                        ]
+                    },
+                    {
+                        "name": "プロジェクト学習",
+                        "description": "北海道新聞のテキストデータを利用して、情報の可視化アプリを開発。",
+                        "tags": [
+                            "データビジュアライゼーション",
+                            "マネジメント"
+                        ]
+                    }
+                ]
             }
         ]
     },
@@ -79,7 +239,7 @@
                         ]
                     },
                     {
-                        "name": "ビオトープの調査",
+                        "name": "Biotop",
                         "description": "人工的に創り上げた生態系の調査活動",
                         "tags": [
                             "生態系",
