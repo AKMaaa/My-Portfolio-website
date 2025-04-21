@@ -31,9 +31,27 @@
     <meta property="og:url" content="https://akmaaa.github.io/My-Portfolio-website/">
     <meta property="og:image" content="https://akmaaa.github.io/My-Portfolio-website/img/meta-og.png">
 
+    <style>
+      #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 1; transition: opacity 0.8s ease-in-out; overflow: hidden; }
+      #loading-screen.hidden { opacity: 0; pointer-events: none; }
+      #p5-loading-canvas-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+      #p5-loading-canvas-container canvas { display: block; max-width: 100%; max-height: 100%; }
+      #loading-screen .completion-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 600; color: #333; opacity: 0; transition: opacity 0.3s ease-in; z-index: 10000; pointer-events: none; }
+      #loading-screen .completion-text.visible { opacity: 1; }
+      #p5-canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+      #p5-canvas-container canvas { display: block; width: 100%; height: 100%; }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
   </head>
   <body data-theme="light">
+
+    <div id="loading-screen">
+      <div id="p5-loading-canvas-container"></div>
+      <div id="loading-completion-text" class="completion-text">Loading Complete!</div>
+  </div>
+
     <div id="p5-canvas-container"></div>
 
     <header class="site-header">
@@ -242,7 +260,9 @@
       </div>
     </footer>
 
+    <script src="js/loading-sketch.js" defer></script>
     <script src="js/sketch.js" defer></script>
+    <script src="js/loading.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>
