@@ -1,0 +1,217 @@
+[
+    {
+        "category": "Frontend Development",
+        "skills": [
+            {
+                "name": "HTML5",
+                "iconType": "devicon",
+                "iconClass": "devicon-html5-plain colored"
+            },
+            {
+                "name": "CSS3",
+                "iconType": "devicon",
+                "iconClass": "devicon-css3-plain colored"
+            },
+            {
+                "name": "JavaScript (ES6+)",
+                "iconType": "devicon",
+                "iconClass": "devicon-javascript-plain colored"
+            },
+            {
+                "name": "TypeScript",
+                "iconType": "devicon",
+                "iconClass": "devicon-typescript-plain colored"
+            },
+            {
+                "name": "React",
+                "iconType": "devicon",
+                "iconClass": "devicon-react-original colored"
+            },
+            {
+                "name": "Vue.js",
+                "iconType": "devicon",
+                "iconClass": "devicon-vuejs-plain-wordmark colored"
+            },
+            {
+                "name": "Next.js",
+                "iconType": "devicon",
+                "iconClass": "devicon-nextjs-original-wordmark"
+            },
+            {
+                "name": "Sass/SCSS",
+                "iconType": "devicon",
+                "iconClass": "devicon-sass-original colored"
+            },
+            {
+                "name": "Processing",
+                "iconType": "devicon",
+                "iconClass": "devicon-processing-plain colored"
+            }
+        ]
+    },
+    {
+        "category": "Backend & Infrastructure",
+        "skills": [
+            {
+                "name": "Node.js",
+                "iconType": "devicon",
+                "iconClass": "devicon-nodejs-plain colored"
+            },
+            {
+                "name": "Python",
+                "iconType": "devicon",
+                "iconClass": "devicon-python-plain"
+            },
+            {
+                "name": "Google Cloud Platform",
+                "iconType": "devicon",
+                "iconClass": "devicon-googlecloud-plain colored"
+            },
+            {
+                "name": "Docker",
+                "iconType": "devicon",
+                "iconClass": "devicon-docker-plain colored"
+            },
+            {
+                "name": "SQL (PostgreSQL)",
+                "iconType": "devicon",
+                "iconClass": "devicon-postgresql-plain colored"
+            },
+            {
+                "name": "Go lang",
+                "iconType": "devicon",
+                "iconClass": "devicon-go-plain colored"
+            },
+            {
+                "name": "Java",
+                "iconType": "devicon",
+                "iconClass": "devicon-java-plain colored"
+            },
+            {
+                "name": "PHP",
+                "iconType": "devicon",
+                "iconClass": "devicon-java-plain coloreddevicon-php-plain colored"
+            },
+            {
+                "name": "WordPress",
+                "iconType": "devicon",
+                "iconClass": "devicon-wordpress-plain colored"
+            },
+            {
+                "name": "Git",
+                "iconType": "devicon",
+                "iconClass": "devicon-git-plain"
+            }
+        ]
+    },
+    {
+        "category": "Systems Programming",
+        "skills": [
+            {
+                "name": "C++",
+                "iconType": "devicon",
+                "iconClass": "devicon-cplusplus-plain colored"
+            },
+            {
+                "name": "C",
+                "iconType": "devicon",
+                "iconClass": "devicon-c-plain colored"
+            }
+        ]
+    },
+    {
+        "category": "Creative & Design Tools",
+        "skills": [
+            {
+                "name": "Figma",
+                "iconType": "devicon",
+                "iconClass": "devicon-figma-plain colored"
+            },
+            {
+                "name": "Adobe XD",
+                "iconType": "devicon",
+                "iconClass": "devicon-xd-plain colored"
+            },
+            {
+                "name": "Adobe illustrator",
+                "iconType": "devicon",
+                "iconClass": "devicon-illustrator-plain colored"
+            },
+            {
+                "name": "p5.js",
+                "iconType": "devicon",
+                "iconClass": "devicon-p5js-original colored"
+            },
+            {
+                "name": "Three.js",
+                "iconType": "devicon",
+                "iconClass": "devicon-threejs-original-wordmark"
+            },
+            {
+                "name": "Arduino",
+                "iconType": "devicon",
+                "iconClass": "devicon-arduino-plain colored"
+            }
+        ]
+    },
+    {
+        "category": "Design & Soft Skills",
+        "skills": [
+            {
+                "name": "UI/UX Design",
+                "iconType": "fas",
+                "iconClass": "fa-object-group"
+            },
+            {
+                "name": "Design Thinking",
+                "iconType": "fas",
+                "iconClass": "fa-lightbulb"
+            },
+            {
+                "name": "Visual Design",
+                "iconType": "fas",
+                "iconClass": "fa-palette"
+            },
+            {
+                "name": "Facilitation",
+                "iconType": "fas",
+                "iconClass": "fa-users-rays"
+            },
+            {
+                "name": "Problem Solving",
+                "iconType": "fas",
+                "iconClass": "fa-puzzle-piece"
+            },
+            {
+                "name": "Communication",
+                "iconType": "fas",
+                "iconClass": "fa-comments"
+            },
+            {
+                "name": "Teamwork",
+                "iconType": "fas",
+                "iconClass": "fa-users"
+            }
+        ]
+    },
+    {
+        "category": "Data Science & Analysis",
+        "skills": [
+            {
+                "name": "Python (Pandas, NumPy)",
+                "iconType": "devicon",
+                "iconClass": "devicon-python-plain colored"
+            },
+            {
+                "name": "Data Visualization",
+                "iconType": "fas",
+                "iconClass": "fa-chart-bar"
+            },
+            {
+                "name": "R",
+                "iconType": "devicon",
+                "iconClass": "devicon-r-plain colored"
+            }
+        ]
+    }
+]

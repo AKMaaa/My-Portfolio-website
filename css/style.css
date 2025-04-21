@@ -510,7 +510,6 @@ section.visible {
 /* --- Skills Section --- */
 #skills .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: calc(var(--spacing-unit) * 3);
 }
 .skill-category h3 {
