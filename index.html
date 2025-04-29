@@ -12,10 +12,7 @@
       rel="stylesheet"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
-    />
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <link
       rel="stylesheet"
@@ -24,12 +21,37 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/favicon.ico" />
+
+
+    <!-- meta -->
+    <meta property="og:title" content="Akira Maeda">
+    <meta property="og:description" content="Akira MaedaのWebサイトです">
+    <meta property="og:url" content="https://akmaaa.github.io/My-Portfolio-website/">
+    <meta property="og:image" content="https://akmaaa.github.io/My-Portfolio-website/img/meta-og.png">
+
+    <style>
+      #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 1; transition: opacity 0.8s ease-in-out; overflow: hidden; }
+      #loading-screen.hidden { opacity: 0; pointer-events: none; }
+      #p5-loading-canvas-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+      #p5-loading-canvas-container canvas { display: block; max-width: 100%; max-height: 100%; }
+      #loading-screen .completion-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 600; color: #333; opacity: 0; transition: opacity 0.3s ease-in; z-index: 10000; pointer-events: none; }
+      #loading-screen .completion-text.visible { opacity: 1; }
+      #p5-canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+      #p5-canvas-container canvas { display: block; width: 100%; height: 100%; }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
   </head>
   <body data-theme="light">
+
+    <div id="loading-screen">
+      <div id="p5-loading-canvas-container"></div>
+      <div id="loading-completion-text" class="completion-text">Loading Complete!</div>
+  </div>
+
     <div id="p5-canvas-container"></div>
 
     <header class="site-header">
@@ -80,83 +102,21 @@
         </div>
    </section>
    
-   <section id="awards">
-       <div class="container">
-           <h2>Awards & Recognition</h2>
-           <div class="awards-list" id="awards-list-content"></div>
-       </div>
-   </section>
+      <section id="awards">
+          <div class="container">
+              <h2>Awards & Recognition</h2>
+              <div class="awards-list" id="awards-list-content"></div>
+          </div>
+      </section>
 
       <section id="skills">
         <div class="container">
-          <h2>Skills</h2>
-          <div class="skills-container">
-            <div class="skill-category">
-              <h3>Technical</h3>
-              <div class="skill-list">
-                <div class="skill-item">
-                  <i class="devicon-html5-plain colored"></i><span>HTML5</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-css3-plain colored"></i><span>CSS3</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-javascript-plain colored"></i
-                  ><span>JavaScript</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-typescript-plain colored"></i
-                  ><span>TypeScript</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-react-original colored"></i
-                  ><span>React</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-python-plain"></i><span>Python</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-nodejs-plain colored"></i
-                  ><span>Node.js</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-git-plain"></i><span>Git</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-figma-plain colored"></i><span>Figma</span>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-threejs-original"></i><span>Three.js</span>
-                </div>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h3>Design & Soft Skills</h3>
-              <div class="skill-list">
-                <div class="skill-item">
-                  <i class="fas fa-object-group"></i><span>UI/UX Design</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-lightbulb"></i><span>Design Thinking</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-users-rays"></i><span>Facilitation</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-puzzle-piece"></i
-                  ><span>Problem Solving</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-comments"></i><span>Communication</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-users"></i><span>Teamwork</span>
-                </div>
-              </div>
-            </div>
-          </div>
+           <h2>Skills</h2>
+            <div class="skills-container" id="skills-container-content">
+               </div>
         </div>
-      </section>
+    </section>
+    
 
       <section id="works">
         <div class="container">
@@ -246,7 +206,7 @@
         <div class="container">
           <h2>Interests</h2>
           <p>
-            Web, Learning Enviroment Design, Coffee Culture, Critical Thinking.
+            Web, Learning Environment Design, Coffee Culture, Critical Thinking.
           </p>
         </div>
       </section>
@@ -273,22 +233,36 @@
             rel="noopener noreferrer"
             title="GitHub"
             class="external-link"
-            >GitHub</a
-          >
+            >GitHub</a>
           <a
             href="https://linkedin.com/in/akitch-maeda-akira"
             target="_blank"
             rel="noopener noreferrer"
             title="LinkedIn"
             class="external-link"
-            >LinkedIn</a
-          >
+            >LinkedIn</a>
+          <a
+          href="https://www.wantedly.com/id/akira_maeda_q"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Wantedly"
+          class="external-link"
+          >Wantedly</a>
+          <a
+          href="https://www.facebook.com/people/Akira-Maeda/100092407533693/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Facebook"
+          class="external-link"
+          >Facebook</a>
         </div>
         <p>&copy; <span id="current-year"></span> Akira Maeda.</p>
       </div>
     </footer>
 
+    <script src="js/loading-sketch.js" defer></script>
     <script src="js/sketch.js" defer></script>
+    <script src="js/loading.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>

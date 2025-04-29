@@ -1,319 +1,331 @@
-// =====================================================
-// p5.js Sketch File: js/sketch.js (Multiple Hearts Formation)
-// =====================================================
+// js/sketch.js (Instance Mode for Background)
 
-let particles = [];
-let p5Canvas;
-let currentParticleP5Colors = [];
-let hearts = []; // 複数のハートを格納する配列
-let numParticles = 1000; // パーティクル数を増やした
-
-// State management for animation
-let currentState = 'SCATTERING'; // Initial state
-let stateTimer = 0;
-const timeInHeart = 300; // Frames to stay in heart shape
-const timeScattering = 400; // Frames to scatter
-
-// Parses RGBA color string safely
+// Helper function (can be global or moved inside instance scope if not needed elsewhere)
 function parseRGBAColor(rgbaString) {
     if (!rgbaString || typeof rgbaString !== 'string') return null;
     const match = rgbaString.match(/rgba?\((\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:,\s*([\d.]+))?\)/);
     if (match) {
         const r = parseInt(match[1], 10); const g = parseInt(match[2], 10); const b = parseInt(match[3], 10);
+        // p5.color expects alpha 0-255, but CSS gives 0-1. Multiply by 255.
         const a = match[4] ? parseFloat(match[4]) : 1;
-        return { r, g, b, a: a * 255 };
+        return { r, g, b, a: a * 255 }; // Convert alpha to 0-255 for p5.color
     }
     console.warn(`Could not parse RGBA string in sketch.js: ${rgbaString}`);
     return null;
 }
 
-// Function to update colors based on theme
+// Global variable to hold the p5 instance for the background sketch
+let backgroundP5Instance = null;
+
+// Global function to update theme colors for the background sketch
 window.updateP5Theme = function (newColorData) {
-    if (!newColorData || !Array.isArray(newColorData)) { /* ... (error handling) ... */ if (typeof color === 'function') { currentParticleP5Colors = [color(100, 100, 100, 150)]; } else { currentParticleP5Colors = []; } return; }
-    try { if (typeof color === 'function') { currentParticleP5Colors = newColorData.map(c => color(c.r, c.g, c.b, c.a)); if (currentParticleP5Colors.length === 0) { currentParticleP5Colors.push(color(100, 100, 100, 150)); } } else { console.warn("p5 color function not available during theme update."); } } catch (e) { console.error("Error applying new theme colors in p5:", e); if (typeof color === 'function') { currentParticleP5Colors = [color(100, 100, 100, 150)]; } }
-    // Apply new colors to existing particles immediately
-    if (particles && particles.length > 0 && currentParticleP5Colors.length > 0) {
-        particles.forEach(p => { p.color = random(currentParticleP5Colors); });
+    if (!backgroundP5Instance) {
+        console.warn("Background p5 instance not ready for theme update.");
+        return;
     }
-}
+    const p = backgroundP5Instance; // Use the stored instance
 
-// Heart Class to manage multiple hearts
-class Heart {
-    constructor(x, y, scale) {
-        this.position = createVector(x, y);
-        this.scale = scale; // サイズ (小：0.5, 中：1.0, 大：1.5 など)
-        this.points = [];
-        this.calculatePoints();
-    }
-
-    // Calculate points for this heart
-    calculatePoints() {
-        this.points = [];
-        let numPoints = floor(map(this.scale, 20, 40, 60, 80)); // スケールに応じてポイント数を調整
-        
-        // Parametric equation for a heart shape
-        for (let t = 0; t < TWO_PI; t += TWO_PI / numPoints) {
-            let x = this.scale * 16 * pow(sin(t), 3);
-            let y = -this.scale * (13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t));
-            this.points.push(createVector(x + this.position.x, y + this.position.y));
-        }
-    }
-}
-
-// Setup multiple hearts with different sizes and positions
-function setupHearts() {
-    hearts = [];
-    
-    // 大中小のハートを画面いっぱいにランダム配置
-    let numHearts = random(5, 12); // 表示するハートの数
-    
-    for (let i = 0; i < numHearts; i++) {
-        // ランダムな位置（画面内に収まるよう調整）
-        let x = random(-width/3, width/3);
-        let y = random(-height/3, height/3);
-        
-        // ランダムなサイズ（小：1.0～1.5、中：1.5～2.5、大：2.5～3.5）- 全体的に大きくした
-        let size;
-        let sizeCategory = random(3); // 0,1,2のいずれか
-        
-        if (sizeCategory < 1) {
-            size = random(1.0, 1.5); // 小さいハート（拡大）
-        } else if (sizeCategory < 2) {
-            size = random(1.5, 2.5); // 中くらいのハート（拡大）
+    if (!newColorData || !Array.isArray(newColorData)) {
+        if (typeof p.color === 'function') {
+            p.currentParticleP5Colors = [p.color(100, 100, 100, 150)];
         } else {
-            size = random(2.5, 3.5); // 大きいハート（拡大）
+            p.currentParticleP5Colors = [];
         }
-        
-        hearts.push(new Heart(x, y, size));
-    }
-}
-
-// ハートのポイントを全て結合した配列を取得
-function getAllHeartPoints() {
-    let allPoints = [];
-    hearts.forEach(heart => {
-        allPoints = allPoints.concat(heart.points);
-    });
-    return allPoints;
-}
-
-function setup() {
-    let canvasContainer = document.getElementById('p5-canvas-container');
-    try {
-        if (!canvasContainer) throw new Error("Canvas container not found");
-        p5Canvas = createCanvas(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
-        p5Canvas.parent('p5-canvas-container');
-        noiseDetail(1, 0.5);
-
-        // 複数のハートをセットアップ
-        setupHearts();
-
-        // Load initial theme colors
-        if (currentParticleP5Colors.length === 0 && typeof getThemeParticleColors === 'function') {
-            window.updateP5Theme(getThemeParticleColors());
-        } else if (currentParticleP5Colors.length === 0 && typeof color === 'function') {
-            // Fallback
-            currentParticleP5Colors = [color(100, 100, 100, 150)];
-        }
-
-        // 全てのハートポイントを取得
-        let allHeartPoints = getAllHeartPoints();
-        
-        // 利用可能なポイント数に合わせてパーティクル数を調整
-        numParticles = min(350, allHeartPoints.length); // パーティクル数を増やした
-
-        // Create particles and assign initial targets
-        particles = [];
-        for (let i = 0; i < numParticles; i++) {
-            // Start particles at random positions
-            let startPos = createVector(random(width), random(height));
-            // Assign a target point from any heart
-            let targetIndex = i % allHeartPoints.length;
-            particles.push(new Particle(startPos.x, startPos.y, allHeartPoints[targetIndex]));
-        }
-
-        currentState = 'SCATTERING'; // Start scattered
-        stateTimer = timeScattering; // Set timer for initial scattering duration
-
-    } catch (e) {
-        console.error("p5.js setup error:", e);
-        if (canvasContainer) canvasContainer.style.display = 'none';
-        noLoop();
+        console.warn("Invalid color data received in updateP5Theme.");
         return;
     }
 
-    window.addEventListener('resize', () => {
-        try {
-            if (!canvasContainer || !p5Canvas) return;
-            resizeCanvas(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
-            
-            // リサイズ時に新しいハートを生成
-            setupHearts();
-            let allHeartPoints = getAllHeartPoints();
-            
-            numParticles = min(150, allHeartPoints.length);
-            
-            particles = []; // Reset particles on resize
-            if (currentParticleP5Colors.length === 0 && typeof getThemeParticleColors === 'function') { 
-                window.updateP5Theme(getThemeParticleColors()); 
-            }
-            
-            for (let i = 0; i < numParticles; i++) {
-                let startPos = createVector(random(width), random(height));
-                let targetIndex = i % allHeartPoints.length;
-                particles.push(new Particle(startPos.x, startPos.y, allHeartPoints[targetIndex]));
-            }
-            
-            currentState = 'SCATTERING';
-            stateTimer = timeScattering;
-
-        } catch (e) { console.error("p5.js resize error:", e); }
-    });
-}
-
-function draw() {
-    if (!p5Canvas || typeof background !== 'function' || typeof color !== 'function') return;
-
     try {
-        let themeBgStr = getComputedStyle(document.documentElement).getPropertyValue('--color-p5-bg').trim();
-        let bgData = parseRGBAColor(themeBgStr);
-        // Make background more transparent for less visible trails
-        let bgCol = bgData ? color(bgData.r, bgData.g, bgData.b, bgData.a * 0.8) : color(0, 0, 0, 5); // アルファ値を小さくして軌跡を薄く
-        background(bgCol);
-
-        // Translate origin to center
-        translate(width / 2, height / 2);
-
-        // Update and display particles
-        for (let i = particles.length - 1; i >= 0; i--) {
-            if (particles[i]) { // Ensure particle exists
-                if (currentState === 'SEEKING_HEART' || currentState === 'FORMING_HEART') {
-                    particles[i].seekTarget();
-                } else { // SCATTERING state
-                    particles[i].wander();
-                }
-                particles[i].update();
-                particles[i].display();
+        if (typeof p.color === 'function') {
+            p.currentParticleP5Colors = newColorData.map(c => p.color(c.r, c.g, c.b, c.a)); // Assuming c.a is already 0-255
+            if (p.currentParticleP5Colors.length === 0) {
+                p.currentParticleP5Colors.push(p.color(100, 100, 100, 150));
             }
-        }
-
-        // State transition logic
-        stateTimer--;
-        if (stateTimer <= 0) {
-            if (currentState === 'SCATTERING') {
-                currentState = 'SEEKING_HEART';
-                stateTimer = timeInHeart * 1.5; // Time to seek + form
-                
-                // 新しいハートを生成
-                setupHearts();
-                let allHeartPoints = getAllHeartPoints();
-                
-                // Reassign targets to ensure they go towards the heart
-                for (let i = 0; i < particles.length; i++) {
-                    if (particles[i]) {
-                        particles[i].target = allHeartPoints[i % allHeartPoints.length];
-                    }
-                }
-            } else if (currentState === 'SEEKING_HEART') {
-                currentState = 'FORMING_HEART';
-                stateTimer = timeInHeart;
-            } else if (currentState === 'FORMING_HEART') {
-                currentState = 'SCATTERING';
-                stateTimer = timeScattering;
-            }
-        }
-
-    } catch (e) {
-        console.error("p5.js draw loop error:", e);
-        noLoop();
-    }
-}
-
-// ===========================
-// Particle Class (Modified)
-// ===========================
-class Particle {
-    constructor(x, y, target) {
-        this.pos = createVector(x, y);
-        this.vel = p5.Vector.random2D().mult(random(1, 3)); // Initial random velocity
-        this.acc = createVector(0, 0);
-        this.target = target.copy(); // Target position on any heart
-        this.originalTarget = target.copy(); // Keep original heart target
-        this.maxSpeed = random(2, 4); // Slightly faster max speed
-        this.maxForce = 0.3;       // Steering force limit
-        this.size = random(1, 1.4); // より小さいパーティクルサイズ
-        this.color = random(currentParticleP5Colors.length > 0 ? currentParticleP5Colors : [color(100, 100, 100, 150)]);
-        this.noiseOffsetX = random(1000); // For wander behavior
-        this.noiseOffsetY = random(1000);
-    }
-
-    applyForce(force) {
-        this.acc.add(force);
-    }
-
-    // --- Steering Behaviors ---
-
-    // Seek: Steer towards a target position
-    seek(targetPos) {
-        let desired = p5.Vector.sub(targetPos, this.pos);
-        let d = desired.mag();
-        let speed = this.maxSpeed;
-        // Arrival behavior: slow down when close to target
-        if (d < 100) { // Radius to start slowing down
-            speed = map(d, 0, 100, 0, this.maxSpeed);
-        }
-        desired.setMag(speed);
-        let steer = p5.Vector.sub(desired, this.vel);
-        steer.limit(this.maxForce);
-        return steer;
-    }
-
-    // Wander: Simulate random-like movement using Perlin noise
-    wander() {
-        let wanderAngle = noise(this.pos.x * 0.01, this.pos.y * 0.01, frameCount * 0.01 + this.noiseOffsetX) * TWO_PI * 2 - TWO_PI; // Angle changes over time
-        let wanderForce = p5.Vector.fromAngle(wanderAngle);
-        wanderForce.setMag(this.maxForce * 0.5); // Less forceful wandering
-        this.applyForce(wanderForce);
-    }
-
-    // --- Update & Display ---
-
-    seekTarget() {
-        // In FORMING_HEART state, make target the original heart position
-        // In SEEKING_HEART, target is also the heart position
-        let force = this.seek(this.target);
-        this.applyForce(force);
-
-        // Add a little random jitter when close to target in FORMING_HEART state
-        if (currentState === 'FORMING_HEART' && this.pos.dist(this.target) < 5) {
-            let jitter = p5.Vector.random2D().mult(0.5);
-            this.applyForce(jitter);
-        }
-    }
-
-    update() {
-        this.vel.add(this.acc);
-        this.vel.limit(this.maxSpeed);
-        this.pos.add(this.vel);
-        this.acc.mult(0); // Reset acceleration
-    }
-
-    display() {
-        noStroke();
-        if (this.color && typeof this.color.levels !== 'undefined') {
-            // Fade in/out based on state? Or keep simple. Let's keep simple for now.
-            // Use the particle's assigned color. Adjust alpha slightly.
-            let displayColor = color(red(this.color), green(this.color), blue(this.color), alpha(this.color) * 0.8);
-            fill(displayColor);
-            ellipse(this.pos.x, this.pos.y, this.size, this.size);
         } else {
-            fill(150, 150); // Fallback
-            ellipse(this.pos.x, this.pos.y, this.size, this.size);
+            console.warn("p5.color function not available during theme update.");
+            p.currentParticleP5Colors = [];
+        }
+    } catch (e) {
+        console.error("Error applying new theme colors in p5:", e);
+        if (typeof p.color === 'function') {
+            p.currentParticleP5Colors = [p.color(100, 100, 100, 150)];
+        } else {
+            p.currentParticleP5Colors = [];
         }
     }
 
-    // We are not using lifespan/decay in this version
-    isDead() {
-        return false; // Particles don't die in this version
+    if (p.particles && p.particles.length > 0 && p.currentParticleP5Colors && p.currentParticleP5Colors.length > 0) {
+        p.particles.forEach(particle => {
+            if (particle) {
+                particle.color = p.random(p.currentParticleP5Colors);
+            }
+        });
     }
 }
+
+// Define the sketch using instance mode
+const backgroundSketch = (p) => {
+    // Sketch-specific variables
+    p.particles = [];
+    p.p5Canvas = null;
+    p.currentParticleP5Colors = [];
+    p.hearts = [];
+    p.numParticles = 350; // Default, adjusted in setup
+    p.currentState = 'SCATTERING';
+    p.stateTimer = 0;
+    const timeInHeart = 300;
+    const timeScattering = 400;
+
+    // Assign this instance to the global variable
+    backgroundP5Instance = p;
+
+    // Define classes within the sketch scope
+    class Heart {
+        constructor(x, y, scale) {
+            this.position = p.createVector(x, y);
+            this.scale = scale;
+            this.points = [];
+            this.calculatePoints();
+        }
+        calculatePoints() {
+            this.points = [];
+            let numPoints = p.floor(p.map(this.scale, 1.0, 3.5, 50, 150)); // More points for larger hearts
+            for (let t = 0; t < p.TWO_PI; t += p.TWO_PI / numPoints) {
+                // Parametric equation for a heart shape
+                let x = this.scale * 16 * p.pow(p.sin(t), 3);
+                let y = -this.scale * (13 * p.cos(t) - 5 * p.cos(2 * t) - 2 * p.cos(3 * t) - p.cos(4 * t));
+                this.points.push(p.createVector(x + this.position.x, y + this.position.y));
+            }
+        }
+    }
+
+    class Particle {
+        constructor(x, y, target) {
+            this.pos = p.createVector(x, y);
+            // Use p5.Vector static methods if available globally, or p.createVector()...
+            // Check if p5.Vector is globally available might be safer
+            this.vel = (typeof p5 !== 'undefined' && p5.Vector) ? p5.Vector.random2D().mult(p.random(1, 3)) : p.createVector(p.random(-1, 1), p.random(-1, 1)).mult(p.random(1, 3));
+            this.acc = p.createVector(0, 0);
+            this.target = target ? target.copy() : p.createVector(p.random(p.width), p.random(p.height));
+            this.originalTarget = this.target.copy(); // Copy the potentially randomized target if original was undefined
+            this.maxSpeed = p.random(2, 4);
+            this.maxForce = 0.3;
+            this.size = p.random(1, 1.4);
+            // Initialize color safely
+            this.color = p.currentParticleP5Colors && p.currentParticleP5Colors.length > 0
+                ? p.random(p.currentParticleP5Colors)
+                : p.color(100, 100, 100, 150); // Fallback color using p.color
+            this.noiseOffsetX = p.random(1000);
+            this.noiseOffsetY = p.random(1000);
+        }
+        applyForce(force) { this.acc.add(force); }
+        seek(targetPos) {
+            let desired = p5.Vector.sub(targetPos, this.pos); // Assumes p5.Vector is global
+            let d = desired.mag();
+            let speed = this.maxSpeed;
+            if (d < 100) { speed = p.map(d, 0, 100, 0, this.maxSpeed); }
+            desired.setMag(speed);
+            let steer = p5.Vector.sub(desired, this.vel); // Assumes p5.Vector is global
+            steer.limit(this.maxForce);
+            return steer;
+        }
+        wander() {
+            let wanderAngle = p.noise(this.pos.x * 0.01, this.pos.y * 0.01, p.frameCount * 0.01 + this.noiseOffsetX) * p.TWO_PI * 2 - p.TWO_PI;
+            let wanderForce = p5.Vector.fromAngle(wanderAngle); // Assumes p5.Vector is global
+            wanderForce.setMag(this.maxForce * 0.5);
+            this.applyForce(wanderForce);
+        }
+        seekTarget() {
+            let force = this.seek(this.target);
+            this.applyForce(force);
+            if (p.currentState === 'FORMING_HEART' && this.target && this.pos.dist(this.target) < 5) { // Check target exists
+                let jitter = p5.Vector.random2D().mult(0.5); // Assumes p5.Vector is global
+                this.applyForce(jitter);
+            }
+        }
+        update() {
+            this.vel.add(this.acc);
+            this.vel.limit(this.maxSpeed);
+            this.pos.add(this.vel);
+            this.acc.mult(0);
+        }
+        display() {
+            p.noStroke();
+            if (this.color && typeof this.color === 'object' && this.color.levels) {
+                let displayColor = p.color(p.red(this.color), p.green(this.color), p.blue(this.color), p.alpha(this.color) * 0.8);
+                p.fill(displayColor);
+                p.ellipse(this.pos.x, this.pos.y, this.size, this.size);
+            } else {
+                p.fill(150, 150);
+                p.ellipse(this.pos.x, this.pos.y, this.size, this.size);
+            }
+        }
+        isDead() { return false; }
+    }
+
+    // --- Helper Functions within sketch scope ---
+    function setupHearts() {
+        p.hearts = [];
+        let numHearts = p.random(5, 12);
+        for (let i = 0; i < numHearts; i++) {
+            let x = p.random(-p.width / 3, p.width / 3);
+            let y = p.random(-p.height / 3, p.height / 3);
+            let size;
+            let sizeCategory = p.random(3);
+            if (sizeCategory < 1) { size = p.random(1.0, 1.5); }
+            else if (sizeCategory < 2) { size = p.random(1.5, 2.5); }
+            else { size = p.random(2.5, 3.5); }
+            p.hearts.push(new Heart(x, y, size));
+        }
+    }
+
+    function getAllHeartPoints() {
+        let allPoints = [];
+        if (p.hearts && p.hearts.length > 0) {
+            p.hearts.forEach(heart => {
+                if (heart && heart.points) {
+                    allPoints = allPoints.concat(heart.points);
+                }
+            });
+        }
+        return allPoints;
+    }
+
+    function initializeParticles() {
+        setupHearts();
+        let allHeartPoints = getAllHeartPoints();
+        if (allHeartPoints.length === 0) {
+            console.warn("No heart points generated for background, cannot create particles.");
+            p.numParticles = 0;
+            p.particles = [];
+            return;
+        }
+
+        p.numParticles = p.min(350, allHeartPoints.length);
+
+        // Initialize colors if needed
+        if (p.currentParticleP5Colors.length === 0 && typeof window.getThemeParticleColors === 'function') {
+            window.updateP5Theme(window.getThemeParticleColors());
+        } else if (p.currentParticleP5Colors.length === 0) {
+            p.currentParticleP5Colors = [p.color(100, 100, 100, 150)];
+        }
+
+
+        p.particles = [];
+        for (let i = 0; i < p.numParticles; i++) {
+            let startPos = p.createVector(p.random(p.width), p.random(p.height));
+            let targetIndex = i % allHeartPoints.length;
+            if (allHeartPoints[targetIndex]) {
+                p.particles.push(new Particle(startPos.x, startPos.y, allHeartPoints[targetIndex]));
+            }
+        }
+        p.currentState = 'SCATTERING';
+        p.stateTimer = timeScattering;
+    }
+
+    // --- p.setup ---
+    p.setup = () => {
+        let canvasContainer = document.getElementById('p5-canvas-container');
+        try {
+            if (!canvasContainer) throw new Error("Background canvas container #p5-canvas-container not found");
+            p.p5Canvas = p.createCanvas(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
+            p.p5Canvas.parent('p5-canvas-container');
+            // Styles should be set via CSS for better control
+            // p.p5Canvas.style('position', 'fixed');
+            // p.p5Canvas.style('top', '0');
+            // p.p5Canvas.style('left', '0');
+            // p.p5Canvas.style('z-index', '-1');
+            // p.p5Canvas.style('pointer-events', 'none');
+
+            p.noiseDetail(1, 0.5);
+            initializeParticles();
+
+        } catch (e) {
+            console.error("p5.js background setup error:", e);
+            if (canvasContainer) canvasContainer.style.display = 'none';
+            p.noLoop();
+            return;
+        }
+    };
+
+    // --- p.draw ---
+    p.draw = () => {
+        if (!p.p5Canvas || !p.particles) return; // Ensure canvas and particles exist
+
+        try {
+            // Get background color from CSS variable
+            let themeBgStr = getComputedStyle(document.documentElement).getPropertyValue('--color-p5-bg').trim();
+            let bgData = parseRGBAColor(themeBgStr); // Use helper function
+            let bgCol = bgData ? p.color(bgData.r, bgData.g, bgData.b, bgData.a * 0.8) // Use alpha directly if parseRGBAColor returns 0-255
+                : p.color(0, 0, 0, 5);
+            p.background(bgCol);
+
+            p.translate(p.width / 2, p.height / 2);
+
+            // Update and display particles
+            for (let i = p.particles.length - 1; i >= 0; i--) {
+                if (p.particles[i]) {
+                    if (p.currentState === 'SEEKING_HEART' || p.currentState === 'FORMING_HEART') {
+                        p.particles[i].seekTarget();
+                    } else {
+                        p.particles[i].wander();
+                    }
+                    p.particles[i].update();
+                    p.particles[i].display();
+                }
+            }
+
+            // State transition logic
+            p.stateTimer--;
+            if (p.stateTimer <= 0) {
+                if (p.currentState === 'SCATTERING') {
+                    p.currentState = 'SEEKING_HEART';
+                    p.stateTimer = timeInHeart * 1.5;
+                    setupHearts();
+                    let allHeartPoints = getAllHeartPoints();
+                    if (allHeartPoints.length > 0) {
+                        for (let i = 0; i < p.particles.length; i++) {
+                            if (p.particles[i]) {
+                                p.particles[i].target = allHeartPoints[i % allHeartPoints.length];
+                            }
+                        }
+                    } else {
+                        p.currentState = 'SCATTERING'; // Revert if no points
+                        p.stateTimer = timeScattering;
+                    }
+                } else if (p.currentState === 'SEEKING_HEART') {
+                    p.currentState = 'FORMING_HEART';
+                    p.stateTimer = timeInHeart;
+                } else if (p.currentState === 'FORMING_HEART') {
+                    p.currentState = 'SCATTERING';
+                    p.stateTimer = timeScattering;
+                }
+            }
+
+        } catch (e) {
+            console.error("p5.js background draw loop error:", e);
+            p.noLoop();
+        }
+    };
+
+    // --- p.windowResized ---
+    p.windowResized = () => {
+        try {
+            let canvasContainer = document.getElementById('p5-canvas-container');
+            if (!canvasContainer || !p.p5Canvas) return;
+            // Check container size before resizing
+            let containerWidth = canvasContainer.offsetWidth;
+            let containerHeight = canvasContainer.offsetHeight;
+            if (containerWidth > 0 && containerHeight > 0) {
+                p.resizeCanvas(containerWidth, containerHeight);
+                initializeParticles(); // Re-initialize simulation on resize
+            } else {
+                console.warn("Container has zero size during resize.");
+            }
+        } catch (e) { console.error("p5.js background resize error:", e); }
+    };
+
+};
+
+// Create the p5 instance for the background sketch
+new p5(backgroundSketch);
