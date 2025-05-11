@@ -13,6 +13,19 @@
         ]
     },
     {
+        "year": 2025,
+        "items": [
+            {
+                "type": "works",
+                "title": "Part Time Job, Web Engineer",
+                "organization": "OpenHeart, Inc.",
+                "url": "https://openheart.co.jp",
+                "period": "2025.05 - current",
+                "description": "Frontend Engineering"
+            }
+        ]
+    },
+    {
         "year": 2024,
         "items": [
             {
